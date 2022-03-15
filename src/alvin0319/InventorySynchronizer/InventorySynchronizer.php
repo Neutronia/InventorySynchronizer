@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace alvin0319\InventorySynchronizer;
 
-use JetBrains\PhpStorm\Pure;
 use pocketmine\event\EventPriority;
 use pocketmine\event\inventory\InventoryTransactionEvent;
 use pocketmine\event\player\PlayerDataSaveEvent;
@@ -73,7 +72,6 @@ final class InventorySynchronizer extends PluginBase{
 		$this->connector->close();
 	}
 
-	#[Pure]
 	public function isInventoryLoaded(Player $player) : bool{
 		return isset($this->inventoryLoadedQueue[$player->getName()]);
 	}
