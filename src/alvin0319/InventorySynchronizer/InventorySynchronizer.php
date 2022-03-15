@@ -124,6 +124,7 @@ final class InventorySynchronizer extends PluginBase{
 
 	public function saveInventory(Player $player) : void{
 		$name = strtolower($player->getName());
+		$this->getLogger()->debug("Saving inventory of $name");
 		$mainInventory = [];
 		for($i = 0; $i < 36; $i++){
 			$item = $player->getInventory()->getItem($i);
@@ -133,7 +134,7 @@ final class InventorySynchronizer extends PluginBase{
 		}
 		$armorInventory = [];
 		for($i = 0; $i < 4; $i++){
-			$item = $player->getInventory()->getItem($i);
+			$item = $player->getArmorInventory()->getItem($i);
 			if(!$item->isNull()){
 				$armorInventory[$i] = $item->jsonSerialize();
 			}
