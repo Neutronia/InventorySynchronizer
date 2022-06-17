@@ -49,7 +49,9 @@ final class InventorySynchronizer extends PluginBase{
 
 		$this->getServer()->getPluginManager()->registerEvent(PlayerDataSaveEvent::class, function(PlayerDataSaveEvent $event) : void{
 			//$event->cancel();
-			$this->saveInventory($event->getPlayer());
+			if($event->getPlayer() instanceof Player){
+				$this->saveInventory($event->getPlayer());
+			}
 		}, EventPriority::NORMAL, $this, true);
 
 		$this->getServer()->getPluginManager()->registerEvent(PlayerQuitEvent::class, function(PlayerQuitEvent $event) : void{
